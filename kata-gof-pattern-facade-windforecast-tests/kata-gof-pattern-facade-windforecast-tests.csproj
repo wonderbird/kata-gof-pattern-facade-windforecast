@@ -14,4 +14,8 @@
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\kata-gof-pattern-facade-windforecast\kata-gof-pattern-facade-windforecast.csproj" />
+  </ItemGroup>
+
 </Project>

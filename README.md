@@ -21,9 +21,13 @@ An application shall provide the wind forecast in beaufort for a particular day 
 - Keep the implementation as minimal as possible in order to keep the kata small. Just fulfill the requirements
 - Use TDD. Tests first. Red, Green, Refactor.
 
-## Requirements
+## Steps to implement the kata
 
-1. Call the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) [[5](#ref-5)] to read a weather forcast for the upcoming five days.
+1. Call the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) [[5](#ref-5)] to read the windspeed of an arbitrary location for the current day.
+
+2. Allow customizing the forecast location (`lat`, `lon`) and duration (`dt`) by passing the parameters `lat`, `lon`, `dt` and `appid` to the API call. The parameters are described in the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) [[5](#ref-5)].
+
+3. 
 
 ## Finishing Touches
 
