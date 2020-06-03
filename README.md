@@ -1,6 +1,6 @@
 # Wind Forecast
 
-![Build Status Badge](https://github.com/wonderbird/kata-gof-facade-windforecast/workflows/.NET%20Core/badge.svg)
+![Build Status Badge](https://github.com/wonderbird/kata-gof-pattern-facade-windforecast/workflows/.NET%20Core/badge.svg)
 
 **Attention**
 
