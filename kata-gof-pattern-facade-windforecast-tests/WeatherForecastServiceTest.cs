@@ -1,19 +1,17 @@
 using System;
-using System.Collections.Specialized;
-using System.Configuration;
 using kata_gof_pattern_facade_windforecast;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace kata_gof_pattern_facade_windforecast_tests
 {
-    public class WindForecastTest
+    public class WeatherForecastServiceTest
     {
         private readonly string ApiKey;
         private readonly bool isRunningInContinuousIntegrationPipeline;
         private readonly ITestOutputHelper output;
 
-        public WindForecastTest(ITestOutputHelper output)
+        public WeatherForecastServiceTest(ITestOutputHelper output)
         {
             this.output = output;
 
@@ -42,7 +40,7 @@ namespace kata_gof_pattern_facade_windforecast_tests
             lat = 51.192699;
             lon = 5.992880;
 
-            var forecast = WindForecast.GetWindForecast(lat, lon, dt, ApiKey, "metric", "de");
+            var forecast = WheatherForecastService.GetWeatherForecast(lat, lon, dt, ApiKey, "metric", "de");
             
             Assert.True(!double.IsNaN(forecast.current.wind_speed));
         }
