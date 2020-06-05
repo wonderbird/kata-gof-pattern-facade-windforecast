@@ -20,7 +20,7 @@ namespace kata_gof_pattern_facade_windforecast_tests
         }
 
         [Fact]
-        public void GetWindForecast__ReturnsWindForecast()
+        public void GetWeatherForecast__ReturnsWindForecast()
         {
             if (isRunningInContinuousIntegrationPipeline)
             {
