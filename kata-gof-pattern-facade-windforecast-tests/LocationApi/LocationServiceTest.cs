@@ -27,7 +27,8 @@ namespace kata_gof_pattern_facade_windforecast_tests
                 return;
             }
 
-            var locations = LocationService.GetLocations("Roermond NL", "0", "", 1, ApiKey);
+            var locationService = new LocationService();
+            var locations = locationService.GetLocations("Roermond NL", "0", "", 1, ApiKey);
 
             Assert.True(!double.IsNaN(locations[0].point.coordinates[0]));
             Assert.True(!double.IsNaN(locations[0].point.coordinates[1]));

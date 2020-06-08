@@ -4,9 +4,9 @@ using System.Text.Json;
 
 namespace kata_gof_pattern_facade_windforecast
 {
-    public class WheatherForecastService
+    public class WeatherForecastService : IWeatherForecastService
     {
-        public static WeatherForecast GetWeatherForecast(double lat, double lon, long dt, string apikey, string units, string lang)
+        public WeatherForecast GetWeatherForecast(double lat, double lon, long dt, string apikey, string units, string lang)
         {
             var httpClient = new HttpClient();
             var uri = new UriBuilder

@@ -32,15 +32,12 @@ namespace kata_gof_pattern_facade_windforecast_tests
             var dt = dtOffset.ToUnixTimeSeconds();
 
             // https://www.latlong.net/convert-address-to-lat-long.html
-            // Rösrath DE
-            var lat = 50.894920;
-            var lon = 7.179570;
-
             // Roermond NL
-            lat = 51.192699;
-            lon = 5.992880;
+            var lat = 51.192699;
+            var lon = 5.992880;
 
-            var forecast = WheatherForecastService.GetWeatherForecast(lat, lon, dt, ApiKey, "metric", "de");
+            var weatherForecastService = new WeatherForecastService();
+            var forecast = weatherForecastService.GetWeatherForecast(lat, lon, dt, ApiKey, "metric", "de");
             
             Assert.True(!double.IsNaN(forecast.current.wind_speed));
         }

@@ -5,9 +5,9 @@ using System.Text.Json;
 
 namespace kata_gof_pattern_facade_windforecast_tests
 {
-    public class LocationService
+    public class LocationService : ILocationService
     {
-        public static List<Resource> GetLocations(string query, string includeNeighbourhood, string include,
+        public List<Resource> GetLocations(string query, string includeNeighbourhood, string include,
             int maxResults,
             string key)
         {
