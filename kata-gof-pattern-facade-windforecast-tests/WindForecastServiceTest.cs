@@ -16,12 +16,22 @@ namespace kata_gof_pattern_facade_windforecast_tests
             var lon = 7.0;
             var expectedWindSpeed = 7.0;
 
+            var weatherForecast = new WeatherForecast
+            {
+                current = new WeatherForecastForMoment
+                {
+                    dt = 0L,
+                    wind_speed = 7.0
+                },
+                hourly = new List<WeatherForecastForMoment>()
+            };
             var weatherForecastService = new Mock<IWeatherForecastService>();
+            weatherForecastService.Setup(x => x.GetWeatherForecast(lat, lon, It.IsAny<long>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(weatherForecast);
 
-            var locationService = new Mock<ILocationService>();
             var locations = new List<Resource>
             {
-                new Resource()
+                new Resource
                 {
                     point = new Point
                     {
@@ -29,6 +39,7 @@ namespace kata_gof_pattern_facade_windforecast_tests
                     }
                 }
             };
+            var locationService = new Mock<ILocationService>();
             locationService.Setup(x => x.GetLocations(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<string>()))
                 .Returns(locations);
 

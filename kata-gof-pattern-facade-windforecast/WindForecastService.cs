@@ -36,7 +36,7 @@ namespace kata_gof_pattern_facade_windforecast
             var lon = locations[0].point.coordinates[1];
 
             var weatherForecast = weatherForecastService.GetWeatherForecast(lat, lon, dt, WeatherForecastServiceApiKey, "metric", "de");
-            return 2.0;
+            return weatherForecast.current.wind_speed;
         }
     }
 }
