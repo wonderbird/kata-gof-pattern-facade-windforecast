@@ -21,7 +21,7 @@ namespace kata_gof_pattern_facade_windforecast_tests
         [InlineData(12, 32.7)]
         public void MetersPerSecondToBeaufort(int expected, double input)
         {
-            var converter = new WindSpeedConverter();
+            var converter = new WindSpeedConverterService();
             var actual = converter.MetersPerSecondToBeaufort(input);
 
             Assert.Equal(expected, actual);

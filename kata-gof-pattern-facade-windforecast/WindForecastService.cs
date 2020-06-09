@@ -8,18 +8,20 @@ namespace kata_gof_pattern_facade_windforecast
         private readonly string LocationServiceApiKey;
         private readonly string WeatherForecastServiceApiKey;
 
-        IWeatherForecastService weatherForecastService;
-        ILocationService locationService;
+        private readonly IWeatherForecastService weatherForecastService;
+        private readonly ILocationService locationService;
+        private readonly IWindSpeedConverterService windSpeedConverterService;
 
         public WindForecastService()
-            : this(new WeatherForecastService(), new LocationService())
+            : this(new WeatherForecastService(), new LocationService(), new WindSpeedConverterService())
         {
         }
 
-        public WindForecastService(IWeatherForecastService weatherForecastService, ILocationService locationService)
+        public WindForecastService(IWeatherForecastService weatherForecastService, ILocationService locationService, IWindSpeedConverterService windSpeedConverterService)
         {
             this.weatherForecastService = weatherForecastService;
             this.locationService = locationService;
+            this.windSpeedConverterService = windSpeedConverterService;
 
             LocationServiceApiKey = Environment.GetEnvironmentVariable("BINGMAPS_APIKEY");
             WeatherForecastServiceApiKey = Environment.GetEnvironmentVariable("OPENWEATHER_APIKEY");
@@ -36,7 +38,10 @@ namespace kata_gof_pattern_facade_windforecast
             var lon = locations[0].point.coordinates[1];
 
             var weatherForecast = weatherForecastService.GetWeatherForecast(lat, lon, dt, WeatherForecastServiceApiKey, "metric", "de");
-            return weatherForecast.current.wind_speed;
+            
+            var windSpeedBeaufort = windSpeedConverterService.MetersPerSecondToBeaufort(weatherForecast.current.wind_speed);
+            
+            return windSpeedBeaufort;
         }
     }
 }

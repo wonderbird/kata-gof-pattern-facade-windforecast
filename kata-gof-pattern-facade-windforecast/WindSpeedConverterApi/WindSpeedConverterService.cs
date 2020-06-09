@@ -2,7 +2,7 @@
 
 namespace kata_gof_pattern_facade_windforecast
 {
-    public class WindSpeedConverter : IWindSpeedConverter
+    public class WindSpeedConverterService : IWindSpeedConverterService
     {
         public int MetersPerSecondToBeaufort(double input)
         {

@@ -30,9 +30,9 @@ An application shall provide the wind forecast in beaufort for a particular day 
 
 3. Create an interface and associated class to transform m/s wind speed to beaufort. Use the table below as a reference.
 
-3. Use the [Bing Maps Find a Location by Query API](https://docs.microsoft.com/en-us/bingmaps/rest-services/locations/find-a-location-by-query) [[7](#ref-7)] to allow specifying the location of the forecast as a string describing the location (e.g. "Amsterdam NL")
+4. Use the [Bing Maps Find a Location by Query API](https://docs.microsoft.com/en-us/bingmaps/rest-services/locations/find-a-location-by-query) [[7](#ref-7)] to allow specifying the location of the forecast as a string describing the location (e.g. "Amsterdam NL")
 
-4. Create a Facade class `WindForecastService`. The method `GetWindForecast(string location, TimeSpan timeFromNow)` shall return the wind speed expected at the `location` at the time `now + timeFromNow`.
+5. Create a Facade class `WindForecastService`. The method `GetWindForecast(string location, TimeSpan timeFromNow)` shall return the wind speed in beaufort expected at the `location` at the time `now + timeFromNow`.
 
 ## Windspeed: m/s to beaufort conversion
 

@@ -14,14 +14,15 @@ namespace kata_gof_pattern_facade_windforecast_tests
             var location = "Roermond NL";
             var lat = 50.0;
             var lon = 7.0;
-            var expectedWindSpeed = 7.0;
+            var windSpeedMetersPerSecond = 3.0;
+            var expectedWindSpeedBeaufort = 11;
 
             var weatherForecast = new WeatherForecast
             {
                 current = new WeatherForecastForMoment
                 {
                     dt = 0L,
-                    wind_speed = 7.0
+                    wind_speed = windSpeedMetersPerSecond
                 },
                 hourly = new List<WeatherForecastForMoment>()
             };
@@ -43,12 +44,17 @@ namespace kata_gof_pattern_facade_windforecast_tests
             locationService.Setup(x => x.GetLocations(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<string>()))
                 .Returns(locations);
 
-            var windForecastService = new WindForecastService(weatherForecastService.Object, locationService.Object);
+            var windSpeedConverterService = new Mock<IWindSpeedConverterService>();
+            windSpeedConverterService.Setup(x => x.MetersPerSecondToBeaufort(windSpeedMetersPerSecond))
+                .Returns(expectedWindSpeedBeaufort);
+
+            var windForecastService = new WindForecastService(weatherForecastService.Object, locationService.Object, windSpeedConverterService.Object);
             var windSpeed = windForecastService.GetWindForecast(location, TimeSpan.FromDays(3.0));
-            Assert.Equal(expectedWindSpeed, windSpeed);
+            Assert.Equal(expectedWindSpeedBeaufort, windSpeed);
 
             weatherForecastService.Verify(x => x.GetWeatherForecast(lat, lon, It.IsAny<long>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
             locationService.Verify(x => x.GetLocations(location, It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<string>()));
+            windSpeedConverterService.Verify(x => x.MetersPerSecondToBeaufort(windSpeedMetersPerSecond));
         }
     }
 }
