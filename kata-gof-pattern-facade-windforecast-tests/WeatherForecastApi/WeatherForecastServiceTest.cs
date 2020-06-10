@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using kata_gof_pattern_facade_windforecast;
 using Xunit;
 using Xunit.Abstractions;
@@ -38,7 +39,7 @@ namespace kata_gof_pattern_facade_windforecast_tests
 
             var weatherForecastService = new WeatherForecastService();
             var forecast = weatherForecastService.GetWeatherForecast(lat, lon, dt, ApiKey, "metric", "de");
-            
+
             Assert.True(!double.IsNaN(forecast.current.wind_speed));
         }
     }

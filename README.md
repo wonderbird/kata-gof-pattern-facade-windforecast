@@ -12,6 +12,9 @@ In this kata you implement the Gang Of Four Facade Pattern [[1](#ref-1), [2](#re
 
 * In this kata we will use the [OpenWeather API](https://openweathermap.org/api) [[4](#ref-4)]. Please create a free account here [Register for OpenWeather API](https://home.openweathermap.org/users/sign_up). Note that they need some hours to enable your account. **After you received your API key, please store it in the environment variable** `OPENWEATHER_APIKEY`.
 * In addition we will use the [Bing Maps API](https://docs.microsoft.com/en-us/bingmaps/rest-services/) [[6](#ref-6)]. Please get your individual API key by following [these instructions](https://docs.microsoft.com/en-us/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key). **After you received your API key, please store it in the environment variable** `BINGMAPS_APIKEY`.
+* Additional helpful information can be found here:
+  * [Wind speed units & wind directions](https://www.windfinder.com/wind/windspeed.htm?) [[8](#ref-8)]
+  * [Unix Epoch to Human Readable Date Converter](https://www.epochconverter.com/) [[9](#ref-9)]
 
 ## Problem Description
 
@@ -77,3 +80,5 @@ Beaufort | Knots | m/s | km/h | mph | Label
 <a name="ref-7">[7]</a> Microsoft: "Bing Maps: Find a Location by Query", https://docs.microsoft.com/en-us/bingmaps/rest-services/locations/find-a-location-by-query, last visited on Jun. 4, 2020.
 
 <a name="ref-8">[8]</a> Windfinder.com GmbH & Co. KG: "Wind speed units & wind directions", https://www.windfinder.com/wind/windspeed.htm?, last visited on Jun. 9, 2020.
+
+<a name="ref-9">[9]</a> Misja.com: "Epoch Converter", https://www.epochconverter.com/, last visited on Jun. 10, 2020.

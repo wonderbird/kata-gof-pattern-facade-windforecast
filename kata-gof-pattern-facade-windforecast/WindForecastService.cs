@@ -40,7 +40,9 @@ namespace kata_gof_pattern_facade_windforecast
             var weatherForecast = weatherForecastService.GetWeatherForecast(lat, lon, dt, WeatherForecastServiceApiKey, "metric", "de");
             
             var windSpeedBeaufort = windSpeedConverterService.MetersPerSecondToBeaufort(weatherForecast.current.wind_speed);
-            
+
+            TODO: Allow to specify a desired forecast time
+
             return windSpeedBeaufort;
         }
     }
