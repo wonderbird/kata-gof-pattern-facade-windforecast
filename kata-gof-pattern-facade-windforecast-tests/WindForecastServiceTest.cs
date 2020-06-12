@@ -2,6 +2,9 @@
 using Moq;
 using System;
 using System.Collections.Generic;
+using kata_gof_pattern_facade_windforecast.LocationApi;
+using kata_gof_pattern_facade_windforecast.WeatherForecastApi;
+using kata_gof_pattern_facade_windforecast.WindSpeedConverterApi;
 using Xunit;
 
 namespace kata_gof_pattern_facade_windforecast_tests

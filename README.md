@@ -10,11 +10,14 @@ In this kata you implement the Gang Of Four Facade Pattern [[1](#ref-1), [2](#re
 
 **Notes**
 
-* In this kata we will use the [OpenWeather API](https://openweathermap.org/api) [[4](#ref-4)]. Please create a free account here [Register for OpenWeather API](https://home.openweathermap.org/users/sign_up). Note that they need some hours to enable your account. **After you received your API key, please store it in the environment variable** `OPENWEATHER_APIKEY`.
-* In addition we will use the [Bing Maps API](https://docs.microsoft.com/en-us/bingmaps/rest-services/) [[6](#ref-6)]. Please get your individual API key by following [these instructions](https://docs.microsoft.com/en-us/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key). **After you received your API key, please store it in the environment variable** `BINGMAPS_APIKEY`.
+* In this kata we will use the [AccuWeather API (Limited Trial, free of charge)](https://developer.accuweather.com/packages). Please create a free account here [Register for AccuWeather API (Limited Trial, free of charge)](https://developer.accuweather.com/user/register). **After you received your API key, please store it in the environment variable** `ACCUWEATHER_APIKEY`.
 * Additional helpful information can be found here:
   * [Wind speed units & wind directions](https://www.windfinder.com/wind/windspeed.htm?) [[8](#ref-8)]
   * [Unix Epoch to Human Readable Date Converter](https://www.epochconverter.com/) [[9](#ref-9)]
+
+**Obsolete, to be deleted**
+* In this kata we will use the [OpenWeather API](https://openweathermap.org/api) [[4](#ref-4)]. Please create a free account here [Register for OpenWeather API](https://home.openweathermap.org/users/sign_up). Note that they need some hours to enable your account. **After you received your API key, please store it in the environment variable** `OPENWEATHER_APIKEY`.
+* In addition we will use the [Bing Maps API](https://docs.microsoft.com/en-us/bingmaps/rest-services/) [[6](#ref-6)]. Please get your individual API key by following [these instructions](https://docs.microsoft.com/en-us/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key). **After you received your API key, please store it in the environment variable** `BINGMAPS_APIKEY`.
 
 ## Problem Description
 

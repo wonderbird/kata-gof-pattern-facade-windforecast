@@ -1,8 +1,9 @@
 ﻿using System;
+using kata_gof_pattern_facade_windforecast.LocationApi;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace kata_gof_pattern_facade_windforecast_tests
+namespace kata_gof_pattern_facade_windforecast_tests.LocationApi
 {
     public class LocationServiceTest
     {

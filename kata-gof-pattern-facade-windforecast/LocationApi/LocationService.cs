@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
 
-namespace kata_gof_pattern_facade_windforecast_tests
+namespace kata_gof_pattern_facade_windforecast.LocationApi
 {
     public class LocationService : ILocationService
     {

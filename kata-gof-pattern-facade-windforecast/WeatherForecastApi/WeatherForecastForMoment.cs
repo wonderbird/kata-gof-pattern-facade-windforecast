@@ -1,4 +1,4 @@
-﻿namespace kata_gof_pattern_facade_windforecast
+﻿namespace kata_gof_pattern_facade_windforecast.WeatherForecastApi
 {
     public class WeatherForecastForMoment
     {

@@ -1,10 +1,9 @@
 using System;
-using System.Linq;
-using kata_gof_pattern_facade_windforecast;
+using kata_gof_pattern_facade_windforecast.WeatherForecastApi;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace kata_gof_pattern_facade_windforecast_tests
+namespace kata_gof_pattern_facade_windforecast_tests.WeatherForecastApi
 {
     public class WeatherForecastServiceTest
     {

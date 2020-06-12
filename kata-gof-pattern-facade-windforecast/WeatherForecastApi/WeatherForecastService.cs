@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Text.Json;
 
-namespace kata_gof_pattern_facade_windforecast
+namespace kata_gof_pattern_facade_windforecast.WeatherForecastApi
 {
     public class WeatherForecastService : IWeatherForecastService
     {

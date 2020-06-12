@@ -1,7 +1,7 @@
-﻿using kata_gof_pattern_facade_windforecast;
+﻿using kata_gof_pattern_facade_windforecast.WindSpeedConverterApi;
 using Xunit;
 
-namespace kata_gof_pattern_facade_windforecast_tests
+namespace kata_gof_pattern_facade_windforecast_tests.WindSpeedConverterApi
 {
     public class WindSpeedConverterTest
     {

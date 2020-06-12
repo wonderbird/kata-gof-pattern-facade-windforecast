@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace kata_gof_pattern_facade_windforecast_tests
+namespace kata_gof_pattern_facade_windforecast.LocationApi
 {
     public class ResourceSet
     {

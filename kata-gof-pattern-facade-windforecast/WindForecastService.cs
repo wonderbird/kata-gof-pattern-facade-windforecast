@@ -1,5 +1,7 @@
-﻿using kata_gof_pattern_facade_windforecast_tests;
-using System;
+﻿using System;
+using kata_gof_pattern_facade_windforecast.LocationApi;
+using kata_gof_pattern_facade_windforecast.WeatherForecastApi;
+using kata_gof_pattern_facade_windforecast.WindSpeedConverterApi;
 
 namespace kata_gof_pattern_facade_windforecast
 {
@@ -41,7 +43,7 @@ namespace kata_gof_pattern_facade_windforecast
             
             var windSpeedBeaufort = windSpeedConverterService.MetersPerSecondToBeaufort(weatherForecast.current.wind_speed);
 
-            TODO: Allow to specify a desired forecast time
+            // TODO: Allow to specify a desired forecast time
 
             return windSpeedBeaufort;
         }
