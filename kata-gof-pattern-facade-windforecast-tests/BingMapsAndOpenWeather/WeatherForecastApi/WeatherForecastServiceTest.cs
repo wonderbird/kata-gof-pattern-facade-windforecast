@@ -1,9 +1,9 @@
 using System;
-using kata_gof_pattern_facade_windforecast.WeatherForecastApi;
+using kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather.WeatherForecastApi;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace kata_gof_pattern_facade_windforecast_tests.WeatherForecastApi
+namespace kata_gof_pattern_facade_windforecast_tests.BingMapsAndOpenWeather.WeatherForecastApi
 {
     public class WeatherForecastServiceTest
     {

@@ -1,9 +1,9 @@
 ﻿using System;
-using kata_gof_pattern_facade_windforecast.LocationApi;
-using kata_gof_pattern_facade_windforecast.WeatherForecastApi;
+using kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather.LocationApi;
+using kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather.WeatherForecastApi;
 using kata_gof_pattern_facade_windforecast.WindSpeedConverterApi;
 
-namespace kata_gof_pattern_facade_windforecast
+namespace kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather
 {
     public class WindForecastService
     {

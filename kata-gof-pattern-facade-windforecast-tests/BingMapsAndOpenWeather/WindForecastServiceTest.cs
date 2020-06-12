@@ -1,13 +1,13 @@
-﻿using kata_gof_pattern_facade_windforecast;
-using Moq;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using kata_gof_pattern_facade_windforecast.LocationApi;
-using kata_gof_pattern_facade_windforecast.WeatherForecastApi;
+using kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather;
+using kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather.LocationApi;
+using kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather.WeatherForecastApi;
 using kata_gof_pattern_facade_windforecast.WindSpeedConverterApi;
+using Moq;
 using Xunit;
 
-namespace kata_gof_pattern_facade_windforecast_tests
+namespace kata_gof_pattern_facade_windforecast_tests.BingMapsAndOpenWeather
 {
     public class WindForecastServiceTest
     {
