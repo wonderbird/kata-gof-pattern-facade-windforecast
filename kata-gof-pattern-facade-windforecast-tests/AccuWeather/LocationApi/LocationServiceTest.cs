@@ -20,7 +20,7 @@ namespace kata_gof_pattern_facade_windforecast_tests.AccuWeather.LocationApi
         }
 
         [Fact]
-        public void GetLocation__ReturnsGpsCoordinates()
+        public void GetLocation__ReturnsCorrectKey()
         {
             if (isRunningInContinuousIntegrationPipeline)
             {

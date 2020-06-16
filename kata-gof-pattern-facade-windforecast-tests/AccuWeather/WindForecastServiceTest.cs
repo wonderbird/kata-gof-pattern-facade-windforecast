@@ -10,7 +10,7 @@ namespace kata_gof_pattern_facade_windforecast_tests.AccuWeather
         public void GetWindForecast__ReturnsWindSpeed()
         {
             var location = "Roermond NL";
-            var expectedWindSpeedBeaufort = 3;
+            var expectedWindSpeedBeaufort = 8;
 
             var windForecastService = new WindForecastService();
             var windSpeed = windForecastService.GetWindForecast(location, TimeSpan.FromDays(3.0));
