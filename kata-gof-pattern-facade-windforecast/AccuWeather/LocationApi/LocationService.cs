@@ -5,13 +5,9 @@ using System.Text.Json;
 
 namespace kata_gof_pattern_facade_windforecast.AccuWeather.LocationApi
 {
-    public class LocationService
+    public class LocationService : ILocationService
     {
-        public LocationService()
-        {
-        }
-
-        public List<Location> GetLocations(string apikey, string q, string language, bool details, int offset, string alias)
+        public IList<Location> GetLocations(string apikey, string q, string language, bool details, int offset, string alias)
         {
             var httpClient = new HttpClient();
             var uri = new UriBuilder
@@ -29,7 +25,7 @@ namespace kata_gof_pattern_facade_windforecast.AccuWeather.LocationApi
 
             var response = httpClient.GetAsync(uri).Result;
             var payload = response.Content.ReadAsStringAsync().Result;
-            var responseObj = JsonSerializer.Deserialize<List<Location>>(payload);
+            var responseObj = JsonSerializer.Deserialize<IList<Location>>(payload);
 
             return responseObj;
         }

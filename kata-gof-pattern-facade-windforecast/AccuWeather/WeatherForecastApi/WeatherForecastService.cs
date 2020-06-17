@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace kata_gof_pattern_facade_windforecast.AccuWeather.WeatherForecastApi
 {
-    public class WeatherForecastService
+    public class WeatherForecastService : IWeatherForecastService
     {
         public WeatherForecast GetWeatherForecast(string locationKey, string apikey, string language, bool details,
             bool metric)

@@ -8,6 +8,8 @@ namespace kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather.WeatherFor
     {
         public WeatherForecast GetWeatherForecast(double lat, double lon, long dt, string apikey, string units, string lang)
         {
+            // TODO: FIX API URL - https://api.openweathermap.org/data/2.5/onecall
+
             var httpClient = new HttpClient();
             var uri = new UriBuilder
             {

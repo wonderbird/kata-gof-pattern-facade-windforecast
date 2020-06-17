@@ -15,5 +15,11 @@ namespace kata_gof_pattern_facade_windforecast.WindSpeedConverterApi
 
             return beaufort;
         }
+
+        public int KilometersPerHourToBeaufort(double input)
+        {
+            var metersPerSecond = input / 3.6;
+            return MetersPerSecondToBeaufort(metersPerSecond);
+        }
     }
 }
