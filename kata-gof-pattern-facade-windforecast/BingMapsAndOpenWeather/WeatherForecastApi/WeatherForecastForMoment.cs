@@ -2,7 +2,7 @@
 {
     public class WeatherForecastForMoment
     {
-        public ulong dt { get; set; }
+        public long dt { get; set; }
         public double wind_speed { get; set; }
     }
 }

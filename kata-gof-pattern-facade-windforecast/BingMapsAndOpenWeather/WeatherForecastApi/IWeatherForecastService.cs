@@ -2,6 +2,6 @@
 {
     public interface IWeatherForecastService
     {
-        WeatherForecast GetWeatherForecast(double lat, double lon, long dt, string apikey, string units, string lang);
+        WeatherForecast GetWeatherForecast(double lat, double lon, string apikey, string units, string lang);
     }
 }

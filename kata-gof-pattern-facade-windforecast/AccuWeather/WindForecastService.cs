@@ -5,7 +5,7 @@ using kata_gof_pattern_facade_windforecast.WindSpeedConverterApi;
 
 namespace kata_gof_pattern_facade_windforecast.AccuWeather
 {
-    public class WindForecastService
+    public class WindForecastService : IWindForecastService
     {
         private readonly string AccuWeatherServiceApiKey;
 
@@ -23,13 +23,12 @@ namespace kata_gof_pattern_facade_windforecast.AccuWeather
             AccuWeatherServiceApiKey = Environment.GetEnvironmentVariable("ACCUWEATHER_APIKEY");
         }
 
-        public double GetWindForecast(string location, TimeSpan timeSpanFromNow)
+        public int GetWindForecastBeaufort(string location, int daysFromToday)
         {
             var locations = locationService.GetLocations(AccuWeatherServiceApiKey, location, "de-de", false, 0, "NoOfficialMatchFound");
             var locationKey = locations[0].Key;
 
             var weatherForecast = weatherForecastService.GetWeatherForecast(locationKey, AccuWeatherServiceApiKey, "de-de", true, true);
-            // TODO: Allow to specify a desired forecast time
 
             var windSpeedKmh = weatherForecast.DailyForecasts[0].Day.Wind.Speed.Value; ;
             var windSpeedBeaufort = windSpeedConverterService.KilometersPerHourToBeaufort(windSpeedKmh);

@@ -37,7 +37,7 @@ namespace kata_gof_pattern_facade_windforecast_tests.BingMapsAndOpenWeather.Weat
             var lon = 5.992880;
 
             var weatherForecastService = new WeatherForecastService();
-            var forecast = weatherForecastService.GetWeatherForecast(lat, lon, dt, ApiKey, "metric", "de");
+            var forecast = weatherForecastService.GetWeatherForecast(lat, lon, ApiKey, "metric", "de");
 
             Assert.True(!double.IsNaN(forecast.current.wind_speed));
         }

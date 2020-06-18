@@ -12,8 +12,9 @@ namespace kata_gof_pattern_facade_windforecast_tests.BingMapsAndOpenWeather
     public class WindForecastServiceTest
     {
         [Fact]
-        public void GetWindForecast__ReturnsWindSpeed()
+        public void GetWindForecastBeaufort_GivenDayInTheFuture_ReturnsWindSpeed()
         {
+            var daysFromToday = 0;
             var location = "Roermond NL";
             var lat = 50.0;
             var lon = 7.0;
@@ -26,11 +27,10 @@ namespace kata_gof_pattern_facade_windforecast_tests.BingMapsAndOpenWeather
                 {
                     dt = 0L,
                     wind_speed = windSpeedMetersPerSecond
-                },
-                hourly = new List<WeatherForecastForMoment>()
+                }
             };
             var weatherForecastService = new Mock<IWeatherForecastService>();
-            weatherForecastService.Setup(x => x.GetWeatherForecast(lat, lon, It.IsAny<long>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+            weatherForecastService.Setup(x => x.GetWeatherForecast(lat, lon, It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(weatherForecast);
 
             var locations = new List<Resource>
@@ -52,10 +52,10 @@ namespace kata_gof_pattern_facade_windforecast_tests.BingMapsAndOpenWeather
                 .Returns(expectedWindSpeedBeaufort);
 
             var windForecastService = new WindForecastService(weatherForecastService.Object, locationService.Object, windSpeedConverterService.Object);
-            var windSpeed = windForecastService.GetWindForecast(location, TimeSpan.FromDays(3.0));
+            var windSpeed = windForecastService.GetWindForecastBeaufort(location, daysFromToday);
             Assert.Equal(expectedWindSpeedBeaufort, windSpeed);
 
-            weatherForecastService.Verify(x => x.GetWeatherForecast(lat, lon, It.IsAny<long>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
+            weatherForecastService.Verify(x => x.GetWeatherForecast(lat, lon, It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()));
             locationService.Verify(x => x.GetLocations(location, It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<string>()));
             windSpeedConverterService.Verify(x => x.MetersPerSecondToBeaufort(windSpeedMetersPerSecond));
         }

@@ -12,8 +12,9 @@ namespace kata_gof_pattern_facade_windforecast_tests.AccuWeather
     public class WindForecastServiceTest
     {
         [Fact]
-        public void GetWindForecast__ReturnsWindSpeed()
+        public void GetWindForecast_GivenDayInTheFuture_ReturnsWindSpeed()
         {
+            var daysFromToday = 0;
             var location = "Roermond NL";
             var expectedWindSpeedBeaufort = 8;
 
@@ -61,7 +62,7 @@ namespace kata_gof_pattern_facade_windforecast_tests.AccuWeather
 
             var windForecastService = new WindForecastService(weatherForecastService.Object, locationService.Object, windSpeedConverterService.Object);
 
-            var windSpeed = windForecastService.GetWindForecast(location, TimeSpan.FromDays(3.0));
+            var windSpeed = windForecastService.GetWindForecastBeaufort(location, daysFromToday);
             Assert.Equal(expectedWindSpeedBeaufort, windSpeed);
 
             weatherForecastService.Verify(x => x.GetWeatherForecast(locationKey, It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()));
