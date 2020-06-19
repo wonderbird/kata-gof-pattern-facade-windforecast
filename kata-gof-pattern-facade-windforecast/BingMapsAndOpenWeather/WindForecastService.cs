@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather.LocationApi;
 using kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather.WeatherForecastApi;
 using kata_gof_pattern_facade_windforecast.WindSpeedConverterApi;
@@ -36,8 +37,11 @@ namespace kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather
             var lon = locations[0].point.coordinates[1];
 
             var weatherForecast = weatherForecastService.GetWeatherForecast(lat, lon, WeatherForecastServiceApiKey, "metric", "de");
-            
-            var windSpeedBeaufort = windSpeedConverterService.MetersPerSecondToBeaufort(weatherForecast.current.wind_speed);
+
+            var desiredDate = DateTime.Now.Date.AddDays(daysFromToday);
+            var desiredForecast = weatherForecast.daily.First(x => desiredDate == DateTimeOffset.FromUnixTimeSeconds(x.dt).Date);
+
+            var windSpeedBeaufort = windSpeedConverterService.MetersPerSecondToBeaufort(desiredForecast.wind_speed);
 
             return windSpeedBeaufort;
         }

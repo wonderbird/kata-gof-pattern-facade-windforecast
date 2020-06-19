@@ -25,10 +25,13 @@ namespace kata_gof_pattern_facade_windforecast_tests
     {
         [Theory]
         [InlineData(typeof(BingMapsAndOpenWeatherTestBuilder), 0, 7)]
+        [InlineData(typeof(BingMapsAndOpenWeatherTestBuilder), 4, 11)]
+
         [InlineData(typeof(AccuWeatherTestBuilder), 0, 7)]
         public void GetWindForecast_GivenDayInTheFuture_ReturnsWindSpeed(Type testBuilderType, int daysFromToday, int expectedWindSpeedBeaufort)
         {
             // TODO Provide more test cases for different prediction dates
+            // TODO Create a generic facade test to use the real services (full integration test)
             var location = "Sample Location";
 
             var builder = (ITestBuilder)Activator.CreateInstance(testBuilderType);
