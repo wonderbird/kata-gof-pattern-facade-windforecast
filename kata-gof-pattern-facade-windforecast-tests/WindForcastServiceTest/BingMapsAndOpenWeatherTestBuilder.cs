@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using kata_gof_pattern_facade_windforecast;
 using kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather;
@@ -24,11 +23,7 @@ namespace kata_gof_pattern_facade_windforecast_tests
 
         public void SetupWindspeedForNextDays(params int[] windSpeedForNextDays)
         {
-            var datesForForecast = Enumerable.Range(0, windSpeedForNextDays.Length)
-                .Select(daysFromToday => DateTime.Now.Date.AddDays(daysFromToday));
-
-            var epochDatesForForecast = datesForForecast
-                .Select(date => new DateTimeOffset(date).ToUnixTimeSeconds());
+            var epochDatesForForecast = EpochDateListGenerator.EpochDatesForNextDays(windSpeedForNextDays.Length);
 
             dailyForecasts = epochDatesForForecast
                 .Zip(windSpeedForNextDays)
@@ -43,35 +38,50 @@ namespace kata_gof_pattern_facade_windforecast_tests
         public void SetupMocks(string location)
         {
             this.location = location;
+
+            SetupWeatherForecastMock();
+            SetupLocationServiceMock();
+            SetupWindSpeedConverterServiceMock();
+        }
+
+        private void SetupWeatherForecastMock()
+        {
             var weatherForecast = new WeatherForecast
             {
                 current = dailyForecasts[0]
             };
             weatherForecastServiceMock = new Mock<IWeatherForecastService>();
-            weatherForecastServiceMock.Setup(x => x.GetWeatherForecast(latitude, longitude, It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+            weatherForecastServiceMock.Setup(x =>
+                    x.GetWeatherForecast(latitude, longitude, It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(weatherForecast);
+        }
 
+        private void SetupLocationServiceMock()
+        {
             var locations = new List<Resource>
             {
                 new Resource
                 {
                     point = new Point
                     {
-                        coordinates = new List<double> { latitude, longitude }
+                        coordinates = new List<double> {latitude, longitude}
                     }
                 }
             };
             locationServiceMock = new Mock<ILocationService>();
-            locationServiceMock.Setup(x => x.GetLocations(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<string>()))
+            locationServiceMock.Setup(x =>
+                    x.GetLocations(this.location, It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<string>()))
                 .Returns(locations);
+        }
 
+        private void SetupWindSpeedConverterServiceMock()
+        {
             windSpeedConverterServiceMock = new Mock<IWindSpeedConverterService>();
             foreach (var forecast in dailyForecasts)
             {
                 windSpeedConverterServiceMock.Setup(x => x.MetersPerSecondToBeaufort(forecast.wind_speed))
-                    .Returns((int)forecast.wind_speed);
+                    .Returns((int) forecast.wind_speed);
             }
-
         }
 
         public IWindForecastService CreateWindForecastService()
