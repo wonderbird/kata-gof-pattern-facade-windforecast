@@ -1,0 +1,18 @@
+﻿<ProjectConfiguration>
+  <Settings>
+    <IgnoredTests>
+      <FixtureTestSelector>
+        <FixtureName>kata_gof_pattern_facade_windforecast_tests.AccuWeather.LocationApi.LocationServiceTest</FixtureName>
+      </FixtureTestSelector>
+      <FixtureTestSelector>
+        <FixtureName>kata_gof_pattern_facade_windforecast_tests.AccuWeather.WeatherForecastApi.WeatherForecastServiceTest</FixtureName>
+      </FixtureTestSelector>
+      <FixtureTestSelector>
+        <FixtureName>kata_gof_pattern_facade_windforecast_tests.BingMapsAndOpenWeather.LocationApi.LocationServiceTest</FixtureName>
+      </FixtureTestSelector>
+      <FixtureTestSelector>
+        <FixtureName>kata_gof_pattern_facade_windforecast_tests.BingMapsAndOpenWeather.WeatherForecastApi.WeatherForecastServiceTest</FixtureName>
+      </FixtureTestSelector>
+    </IgnoredTests>
+  </Settings>
+</ProjectConfiguration>

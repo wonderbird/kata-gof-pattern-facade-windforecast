@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using kata_gof_pattern_facade_windforecast.AccuWeather.LocationApi;
 using kata_gof_pattern_facade_windforecast.AccuWeather.WeatherForecastApi;
 using kata_gof_pattern_facade_windforecast.WindSpeedConverterApi;
@@ -30,8 +31,12 @@ namespace kata_gof_pattern_facade_windforecast.AccuWeather
 
             var weatherForecast = weatherForecastService.GetWeatherForecast(locationKey, AccuWeatherServiceApiKey, "de-de", true, true);
 
-            var windSpeedKmh = weatherForecast.DailyForecasts[0].Day.Wind.Speed.Value; ;
+            var desiredDate = DateTime.Now.ToUniversalTime().Date.AddDays(daysFromToday);
+            var desiredForecast = weatherForecast.DailyForecasts.First(x => desiredDate == DateTimeOffset.FromUnixTimeSeconds(x.EpochDate).Date);
+            
+            var windSpeedKmh = desiredForecast.Day.Wind.Speed.Value;
             var windSpeedBeaufort = windSpeedConverterService.KilometersPerHourToBeaufort(windSpeedKmh);
+            
             return windSpeedBeaufort;
         }
     }

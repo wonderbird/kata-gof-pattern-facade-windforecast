@@ -38,10 +38,11 @@ namespace kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather
 
             var weatherForecast = weatherForecastService.GetWeatherForecast(lat, lon, WeatherForecastServiceApiKey, "metric", "de");
 
-            var desiredDate = DateTime.Now.Date.AddDays(daysFromToday);
+            var desiredDate = DateTime.Now.ToUniversalTime().Date.AddDays(daysFromToday);
             var desiredForecast = weatherForecast.daily.First(x => desiredDate == DateTimeOffset.FromUnixTimeSeconds(x.dt).Date);
 
-            var windSpeedBeaufort = windSpeedConverterService.MetersPerSecondToBeaufort(desiredForecast.wind_speed);
+            var windSpeedMetersPerSecond = desiredForecast.wind_speed;
+            var windSpeedBeaufort = windSpeedConverterService.MetersPerSecondToBeaufort(windSpeedMetersPerSecond);
 
             return windSpeedBeaufort;
         }
