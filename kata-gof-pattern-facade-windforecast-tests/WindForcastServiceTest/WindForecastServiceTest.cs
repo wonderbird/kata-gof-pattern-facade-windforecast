@@ -42,5 +42,32 @@ namespace kata_gof_pattern_facade_windforecast_tests
             director.VerifyMocks();
             Assert.Equal(expectedWindSpeedBeaufort, actualWindSpeedBeaufort);
         }
+
+        [Theory]
+        [InlineData(typeof(BingMapsAndOpenWeatherTestBuilder), -1)]
+        [InlineData(typeof(BingMapsAndOpenWeatherTestBuilder), 5)]
+        [InlineData(typeof(AccuWeatherTestBuilder), -1)]
+        [InlineData(typeof(AccuWeatherTestBuilder), 5)]
+        public void GetWindForecast_InvalidDayInTheFuture_ThrowsOutOfRangeException(Type testBuilderType, int daysFromToday)
+        {
+            const string location = "Sample Location";
+
+            var builder = (ITestBuilder)Activator.CreateInstance(testBuilderType);
+            var director = new TestDirector(builder);
+
+            director.SetupWindspeedForNextDays(7, 8, 9, 10, 11);
+
+            var haveExpectedException = false;
+            try
+            {
+                director.GetWindForecastBeaufort(location, daysFromToday);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                haveExpectedException = true;
+            }
+
+            Assert.True(haveExpectedException);
+        }
     }
 }
