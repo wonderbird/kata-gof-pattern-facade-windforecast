@@ -8,7 +8,7 @@ namespace kata_gof_pattern_facade_windforecast.AccuWeather
 {
     public class WindForecastService : IWindForecastService
     {
-        private readonly string AccuWeatherServiceApiKey;
+        public string AccuWeatherServiceApiKey { private get; set; } = Environment.GetEnvironmentVariable("ACCUWEATHER_APIKEY");
 
         private readonly IWeatherForecastService weatherForecastService;
         private readonly IWindSpeedConverterService windSpeedConverterService;
@@ -25,8 +25,6 @@ namespace kata_gof_pattern_facade_windforecast.AccuWeather
             this.weatherForecastService = weatherForecastService;
             this.windSpeedConverterService = windSpeedConverterService;
             this.locationService = locationService;
-
-            AccuWeatherServiceApiKey = Environment.GetEnvironmentVariable("ACCUWEATHER_APIKEY");
         }
 
         public int GetWindForecastBeaufort(string location, int daysFromToday)

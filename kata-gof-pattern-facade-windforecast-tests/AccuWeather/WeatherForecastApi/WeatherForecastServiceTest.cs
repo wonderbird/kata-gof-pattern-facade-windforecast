@@ -1,4 +1,6 @@
 using System;
+using System.Net;
+using kata_gof_pattern_facade_windforecast.AccuWeather.LocationApi;
 using kata_gof_pattern_facade_windforecast.AccuWeather.WeatherForecastApi;
 using Xunit;
 using Xunit.Abstractions;
@@ -36,6 +38,13 @@ namespace kata_gof_pattern_facade_windforecast_tests.AccuWeather.WeatherForecast
 
             Assert.True(!double.IsNaN(forecast.DailyForecasts[0].Day.Wind.Speed.Value));
             Assert.Equal("km/h", forecast.DailyForecasts[0].Day.Wind.Speed.Unit);
+        }
+
+        [Fact]
+        public void GetWeatherForecast_InvalidApiKey_ThrowsWebException()
+        {
+            var weatherForecastService = new WeatherForecastService();
+            Assert.Throws<WebException>(() => weatherForecastService.GetWeatherForecast("", "INVALID API KEY", "", false, false));
         }
     }
 }

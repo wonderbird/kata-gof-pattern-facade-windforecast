@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using kata_gof_pattern_facade_windforecast.AccuWeather.LocationApi;
 using Xunit;
 using Xunit.Abstractions;
@@ -35,6 +36,13 @@ namespace kata_gof_pattern_facade_windforecast_tests.AccuWeather.LocationApi
             var locations = locationService.GetLocations(ApiKey, query, "de-de", false, 0, "NoOfficialMatchFound");
 
             Assert.Equal(expectedKey, locations[0].Key);
+        }
+
+        [Fact]
+        public void GetLocation_InvalidApiKey_ThrowsWebException()
+        {
+            var locationService = new LocationService();
+            Assert.Throws<WebException>(() => locationService.GetLocations("INVALID API KEY", "", "", false, 0, ""));
         }
     }
 }

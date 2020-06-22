@@ -12,8 +12,13 @@ namespace WeatherForecast
             Console.Write("How many days ahead (0-5)? ");
             var daysFromNow = int.Parse(Console.ReadLine());
 
-            //var beaufort = new kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather.WindForecastService().GetWindForecastBeaufort(location, daysFromNow);
-            var beaufort = new kata_gof_pattern_facade_windforecast.AccuWeather.WindForecastService().GetWindForecastBeaufort(location, daysFromNow);
+            //var windForecastService = new kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather.WindForecastService();
+            var windForecastService = new kata_gof_pattern_facade_windforecast.AccuWeather.WindForecastService();
+            var beaufort = windForecastService.GetWindForecastBeaufort(location, daysFromNow);
+
+            // TODO: Handle invalid API Keys in the Bing and OpenWeatherMap APIs
+            // TODO: Enhance docs for Bing and OpenWeatherMap APIS like in AccuWeather. Same for WindForecastService
+
             Console.WriteLine($"Wind of {beaufort} Beaufort is expected.");
         }
     }

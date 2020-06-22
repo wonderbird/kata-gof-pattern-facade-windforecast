@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 
@@ -25,9 +26,16 @@ namespace kata_gof_pattern_facade_windforecast.AccuWeather.LocationApi
 
             var response = httpClient.GetAsync(uri).Result;
             var payload = response.Content.ReadAsStringAsync().Result;
-            var responseObj = JsonSerializer.Deserialize<IList<Location>>(payload);
 
-            return responseObj;
+            try
+            {
+                var responseObj = JsonSerializer.Deserialize<IList<Location>>(payload);
+                return responseObj;
+            }
+            catch (JsonException e)
+            {
+                throw new WebException($"Unexpected API response: {payload}", e);
+            }
         }
     }
 }
