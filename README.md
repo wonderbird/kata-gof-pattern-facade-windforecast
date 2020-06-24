@@ -2,33 +2,49 @@
 
 ![Build Status Badge](https://github.com/wonderbird/kata-gof-pattern-facade-windforecast/workflows/.NET%20Core/badge.svg)
 
-**Attention**
-
-This kata is under development. I have just begun documenting the idea. Please come back later, after June 9, 2020.
-
 In this kata you implement the Gang Of Four Facade Pattern [[1](#ref-1), [2](#ref-2), [3](#ref-3)].
 
-**Notes**
+**Note**
 
-* In this kata we will use the [AccuWeather API (Limited Trial, free of charge)](https://developer.accuweather.com/packages). Please create a free account here [Register for AccuWeather API (Limited Trial, free of charge)](https://developer.accuweather.com/user/register). **After you received your API key, please store it in the environment variable** `ACCUWEATHER_APIKEY`.
-* Additional helpful information can be found here:
-  * [Wind speed units & wind directions](https://www.windfinder.com/wind/windspeed.htm?) [[8](#ref-8)]
-  * [Unix Epoch to Human Readable Date Converter](https://www.epochconverter.com/) [[9](#ref-9)]
-
-**Obsolete, to be deleted**
-* In this kata we will use the [OpenWeather API](https://openweathermap.org/api) [[4](#ref-4)]. Please create a free account here [Register for OpenWeather API](https://home.openweathermap.org/users/sign_up). Note that they need some hours to enable your account. **After you received your API key, please store it in the environment variable** `OPENWEATHER_APIKEY`.
-* In addition we will use the [Bing Maps API](https://docs.microsoft.com/en-us/bingmaps/rest-services/) [[6](#ref-6)]. Please get your individual API key by following [these instructions](https://docs.microsoft.com/en-us/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key). **After you received your API key, please store it in the environment variable** `BINGMAPS_APIKEY`.
+Please note that this documentation is currently work in progress. The demo code is already complete.
 
 ## Problem Description
 
 An application shall provide the wind forecast in beaufort for a particular day at a given location.
+
+**Background information**
+
+You can do this kata with simulated data. If you prefer this approach, then please download the interfaces [ILocationService](kata-gof-pattern-facade-windforecast/AccuWeather/LocationApi/ILocationService.cs) and [IWeatherService](kata-gof-pattern-facade-windforecast/AccuWeather/WeatherForecastApi/IWeatherForecastService.cs) from this repository and the associated data classes. Use a mocking framework like [Moq](https://github.com/Moq/moq4/wiki/Quickstart) in order to provide simulated data to your tests.
+
+If you would like to play with real data, then you need API keys for two services: one service shall provide geolocation information, the other shall provide a weather forecast based on the geolocation.
+
+The following services can be used in a trial version free of charge and are covered by the code in this demo:
+
+| Geolocation | Weather forecast | Sign up for trial API keys
+| ----------- | ---------------- | --------------------------
+| [AccuWeather API](https://developer.accuweather.com/packages) | [AccuWeather API](https://developer.accuweather.com/packages) | [Register for AccuWeather API (Limited Trial, free of charge)](https://developer.accuweather.com/user/register)
+| [Bing Maps API](https://docs.microsoft.com/en-us/bingmaps/rest-services/) | [OpenWeather API](https://openweathermap.org/api) | [Register for a Bing Maps Key](https://docs.microsoft.com/en-us/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key), [Register for OpenWeather API](https://home.openweathermap.org/users/sign_up)
+
+Additional helpful information can be found here:
+  * [Wind speed units & wind directions](https://www.windfinder.com/wind/windspeed.htm?) [[8](#ref-8)]
+  * [Unix Epoch to Human Readable Date Converter](https://www.epochconverter.com/) [[9](#ref-9)]
+
+**Note on the solution in this repository**
+
+This solution expects that you have API keys for all APIs mentioned above. Please store the keys in environment variables before launching your IDE or test runner:
+
+| Variable | API
+| -------- | ---
+| `ACCUWEATHER_APIKEY` | [AccuWeather API](https://developer.accuweather.com/packages)
+| `OPENWEATHER_APIKEY` | [OpenWeather API](https://openweathermap.org/api)
+| `BINGMAPS_APIKEY` | [Bing Maps API](https://docs.microsoft.com/en-us/bingmaps/rest-services/)
 
 ## Hint
 
 - Keep the implementation as minimal as possible in order to keep the kata small. Just fulfill the requirements
 - Use TDD. Tests first. Red, Green, Refactor.
 
-## Steps to implement the kata
+## Steps to implement the kata (definition is work in progress)
 
 1. Call the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) [[5](#ref-5)] to read the windspeed of an arbitrary location for the current day.
 
