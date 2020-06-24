@@ -8,7 +8,7 @@ namespace kata_gof_pattern_facade_windforecast.AccuWeather.LocationApi
         /// <summary>
         /// Returns information for an array of locations that match the search text.
         /// </summary>
-        /// <remarks>See also: https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/search</remarks>
+        /// <remarks>See also: https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/search </remarks>
         /// <param name="apikey">Provided API Key.</param>
         /// <param name="q">Text to search for.</param>
         /// <param name="language">String indicating the language in which to return the resource.</param>

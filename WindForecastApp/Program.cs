@@ -16,8 +16,6 @@ namespace WeatherForecast
             //var windForecastService = new kata_gof_pattern_facade_windforecast.AccuWeather.WindForecastService();
             var beaufort = windForecastService.GetWindForecastBeaufort(location, daysFromNow);
 
-            // TODO: Enhance docs for Bing and OpenWeatherMap APIS like in AccuWeather. Same for WindForecastService
-
             Console.WriteLine($"Wind of {beaufort} Beaufort is expected.");
         }
     }
