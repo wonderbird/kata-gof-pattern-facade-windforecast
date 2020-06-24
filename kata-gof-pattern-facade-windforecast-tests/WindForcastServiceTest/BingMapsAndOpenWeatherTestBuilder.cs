@@ -48,8 +48,7 @@ namespace kata_gof_pattern_facade_windforecast_tests
         {
             var weatherForecast = new WeatherForecast
             {
-                daily = dailyForecasts,
-                current = dailyForecasts[0]
+                daily = dailyForecasts
             };
             weatherForecastServiceMock = new Mock<IWeatherForecastService>();
             weatherForecastServiceMock.Setup(x =>

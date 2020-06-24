@@ -29,7 +29,8 @@ namespace kata_gof_pattern_facade_windforecast.AccuWeather.WeatherForecastApi
 
             if (forecast.DailyForecasts.Count == 0)
             {
-                throw new WebException($"Unexpected API response: {payload}");
+                var message = string.Format(StringResources.UnexpectedApiResponse, payload);
+                throw new WebException(message);
             }
 
             return forecast;

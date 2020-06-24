@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather.WeatherForecastApi;
 using Xunit;
 using Xunit.Abstractions;
@@ -39,7 +40,15 @@ namespace kata_gof_pattern_facade_windforecast_tests.BingMapsAndOpenWeather.Weat
             var weatherForecastService = new WeatherForecastService();
             var forecast = weatherForecastService.GetWeatherForecast(lat, lon, ApiKey, "metric", "de");
 
-            Assert.True(!double.IsNaN(forecast.current.wind_speed));
+            Assert.True(!double.IsNaN(forecast.daily[0].wind_speed));
         }
+
+        [Fact]
+        public void GetWeatherForecast_InvalidApiKey_ThrowsWebException()
+        {
+            var weatherForecastService = new WeatherForecastService();
+            Assert.Throws<WebException>(() => weatherForecastService.GetWeatherForecast(0.0, 0.0, "INVALID API KEY", "", ""));
+        }
+
     }
 }

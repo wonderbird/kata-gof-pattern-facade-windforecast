@@ -7,12 +7,12 @@
       <NamedTestSelector>
         <TestName>kata_gof_pattern_facade_windforecast_tests.AccuWeather.WeatherForecastApi.WeatherForecastServiceTest.GetWeatherForecast__ReturnsWindForecast</TestName>
       </NamedTestSelector>
-      <FixtureTestSelector>
-        <FixtureName>kata_gof_pattern_facade_windforecast_tests.BingMapsAndOpenWeather.LocationApi.LocationServiceTest</FixtureName>
-      </FixtureTestSelector>
-      <FixtureTestSelector>
-        <FixtureName>kata_gof_pattern_facade_windforecast_tests.BingMapsAndOpenWeather.WeatherForecastApi.WeatherForecastServiceTest</FixtureName>
-      </FixtureTestSelector>
+      <NamedTestSelector>
+        <TestName>kata_gof_pattern_facade_windforecast_tests.BingMapsAndOpenWeather.LocationApi.LocationServiceTest.GetLocation__ReturnsGpsCoordinates</TestName>
+      </NamedTestSelector>
+      <NamedTestSelector>
+        <TestName>kata_gof_pattern_facade_windforecast_tests.BingMapsAndOpenWeather.WeatherForecastApi.WeatherForecastServiceTest.GetWeatherForecast__ReturnsWindForecast</TestName>
+      </NamedTestSelector>
     </IgnoredTests>
   </Settings>
 </ProjectConfiguration>

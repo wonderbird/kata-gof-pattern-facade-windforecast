@@ -32,9 +32,10 @@ namespace kata_gof_pattern_facade_windforecast.AccuWeather.LocationApi
                 var responseObj = JsonSerializer.Deserialize<IList<Location>>(payload);
                 return responseObj;
             }
-            catch (JsonException e)
+            catch (JsonException)
             {
-                throw new WebException($"Unexpected API response: {payload}", e);
+                var message = string.Format(StringResources.UnexpectedApiResponse, payload);
+                throw new WebException(message);
             }
         }
     }

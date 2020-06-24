@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 
@@ -24,6 +25,12 @@ namespace kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather.WeatherFor
             var response = httpClient.GetAsync(uri).Result;
             var payload = response.Content.ReadAsStringAsync().Result;
             var forecast = JsonSerializer.Deserialize<WeatherForecast>(payload, null);
+
+            if (forecast.daily.Count == 0)
+            {
+                var message = string.Format(StringResources.UnexpectedApiResponse, payload);
+                throw new WebException(message);
+            }
 
             return forecast;
         }

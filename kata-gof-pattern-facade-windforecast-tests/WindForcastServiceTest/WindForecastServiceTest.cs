@@ -26,7 +26,6 @@ namespace kata_gof_pattern_facade_windforecast_tests
         [Theory]
         [InlineData(typeof(BingMapsAndOpenWeatherTestBuilder), 0, 7)]
         [InlineData(typeof(BingMapsAndOpenWeatherTestBuilder), 4, 11)]
-
         [InlineData(typeof(AccuWeatherTestBuilder), 0, 7)]
         [InlineData(typeof(AccuWeatherTestBuilder), 4, 11)]
         public void GetWindForecast_GivenDayInTheFuture_ReturnsWindSpeed(Type testBuilderType, int daysFromToday, int expectedWindSpeedBeaufort)
@@ -57,17 +56,7 @@ namespace kata_gof_pattern_facade_windforecast_tests
 
             director.SetupWindspeedForNextDays(7, 8, 9, 10, 11);
 
-            var haveExpectedException = false;
-            try
-            {
-                director.GetWindForecastBeaufort(location, daysFromToday);
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                haveExpectedException = true;
-            }
-
-            Assert.True(haveExpectedException);
+            Assert.Throws<ArgumentOutOfRangeException>(() => director.GetWindForecastBeaufort(location, daysFromToday));
         }
     }
 }
