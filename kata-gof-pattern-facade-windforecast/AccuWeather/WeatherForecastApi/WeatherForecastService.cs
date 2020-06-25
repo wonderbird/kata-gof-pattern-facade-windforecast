@@ -24,7 +24,6 @@ namespace kata_gof_pattern_facade_windforecast.AccuWeather.WeatherForecastApi
 
             var response = httpClient.GetAsync(uri).Result;
             var payload = response.Content.ReadAsStringAsync().Result;
-
             var forecast = JsonSerializer.Deserialize<WeatherForecast>(payload, null);
 
             if (forecast.DailyForecasts.Count == 0)
