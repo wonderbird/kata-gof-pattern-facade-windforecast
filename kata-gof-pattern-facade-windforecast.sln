@@ -8,13 +8,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F430D265-5ADD-4337-AD90-3B9CBDBE0AA0}"
 	ProjectSection(SolutionItems) = preProject
 		tools\dupfinder.bat = tools\dupfinder.bat
+		facade.png = facade.png
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kata-gof-pattern-facade-windforecast-tests", "kata-gof-pattern-facade-windforecast-tests\kata-gof-pattern-facade-windforecast-tests.csproj", "{F0A22013-C975-45FD-AF32-8C678ACEAD3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindForecastApp", "WindForecastApp\WindForecastApp.csproj", "{ED94BBE4-F945-441B-AC76-B0B5CFEAEC74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindForecastApp", "WindForecastApp\WindForecastApp.csproj", "{ED94BBE4-F945-441B-AC76-B0B5CFEAEC74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

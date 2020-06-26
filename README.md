@@ -9,6 +9,21 @@ In this kata you implement the Gang Of Four Facade Pattern [[1](#ref-1), [2](#re
 
 An application shall provide the wind forecast in beaufort for a particular day at a given location.
 
+## Intended Design
+
+Use the Facade pattern to hide the different APIs with their special value objects. An implementation may look as depicted here:
+
+![Facade Pattern](facade.png)
+
+| Class(es) | Description
+| --------- | -----------
+| `WindForecastService` | This Facade hides the underlying services and associated data types
+| `LocationService`, `Location` | Client class and associated value object to call an HTTP service providing location information associated with a search string
+| `WeatherForecastService`, `WeatherForecast`, `DailyForecast`, `Day`, `Wind`, `WindSpeed` | Client class and associated value objects to call an HTTP service providing the daily weather forecast for a location
+| `WindSpeedConverter` | Provides methods to convert wind speed from m/s to Beaufort and from km/h to Beaufort, respectively
+
+For every non-value object, an interface allows to create mocks for tests.
+
 ### Background information
 
 You can do this kata with simulated data. If you prefer this approach, then please download the interfaces [ILocationService](kata-gof-pattern-facade-windforecast/AccuWeather/LocationApi/ILocationService.cs) and [IWeatherService](kata-gof-pattern-facade-windforecast/AccuWeather/WeatherForecastApi/IWeatherForecastService.cs) from this repository and the associated data classes. Use a mocking framework like [Moq](https://github.com/Moq/moq4/wiki/Quickstart) in order to provide simulated data to your tests.
@@ -67,7 +82,7 @@ The following steps show how you can get into more details about the kata. Each 
 
 - Avoid duplicated code (use `tools\dupfinder.bat`).
 - Fix all static code analysis warnings.
-- Check the Cyclomatic Complexity of your source code files. For me, the most complex class has a value of (9 - EventAggregator) and the most complex method has a value of (4 - EventAggregator.Publish). See Visual Studio -> Analyze -> Calculate Code Metrics.
+- Check the Cyclomatic Complexity of your source code files. For me, the most complex class has a value of (7 - AccuWeather.WindForecastService) and the most complex methods have a value of (3 - GetWindForecastBeaufort in both WindForecastService classes). See Visual Studio -> Analyze -> Calculate Code Metrics.
 
 ## Appendix
 
