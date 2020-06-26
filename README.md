@@ -11,7 +11,7 @@ An application shall provide the wind forecast in beaufort for a particular day 
 
 ## Intended Design
 
-Use the Facade pattern to hide the different APIs with their special value objects. An implementation may look as depicted here:
+Use the Facade pattern to hide the different APIs with their special value objects. An implementation may look as depicted here. The number of value objects per service depends on the acutal service provider you choose.
 
 ![Facade Pattern](facade.png)
 
