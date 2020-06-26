@@ -22,4 +22,8 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
+      env:
+        ACCUWEATHER_APIKEY: ${{ secrets.ACCUWEATHER_APIKEY }}
+        BINGMAPS_APIKEY: ${{ secrets.BINGMAPS_APIKEY }}
+        OPENWEATHER_APIKEY: ${{ secrets.OPENWEATHER_APIKEY }}
       run: dotnet test --no-restore --verbosity normal

@@ -2,33 +2,16 @@ using System;
 using System.Net;
 using kata_gof_pattern_facade_windforecast.BingMapsAndOpenWeather.WeatherForecastApi;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace kata_gof_pattern_facade_windforecast_tests.BingMapsAndOpenWeather.WeatherForecastApi
 {
     public class WeatherForecastServiceTest
     {
-        private readonly string ApiKey;
-        private readonly bool isRunningInContinuousIntegrationPipeline;
-        private readonly ITestOutputHelper output;
-
-        public WeatherForecastServiceTest(ITestOutputHelper output)
-        {
-            this.output = output;
-
-            isRunningInContinuousIntegrationPipeline = Environment.GetEnvironmentVariable("CI") == "true";
-            ApiKey = Environment.GetEnvironmentVariable("OPENWEATHER_APIKEY");
-        }
+        private readonly string ApiKey = Environment.GetEnvironmentVariable("OPENWEATHER_APIKEY");
 
         [Fact]
         public void GetWeatherForecast__ReturnsWindForecast()
         {
-            if (isRunningInContinuousIntegrationPipeline)
-            {
-                output.WriteLine("Running in CI Pipeline - Skipping this test");
-                return;
-            }
-
             var dtOffset = new DateTimeOffset(DateTime.Now);
             var dt = dtOffset.ToUnixTimeSeconds();
 
