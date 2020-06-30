@@ -6,6 +6,11 @@
       <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAoBAA=</HashCode>
       <FileName>AccuWeather\WindForecastService.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="locationService" />
+      <Field Name="weatherForecastService" />
+      <Field Name="windSpeedConverterService" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="kata_gof_pattern_facade_windforecast.AccuWeather.LocationApi.LocationService" Collapsed="true">
